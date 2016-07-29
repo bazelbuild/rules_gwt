@@ -1,0 +1,1 @@
+# GWT Rules for Bazel
