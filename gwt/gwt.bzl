@@ -84,9 +84,10 @@ def _gwt_dev_impl(ctx):
   # Find all transitive dependencies that need to go on the classpath
   all_deps = _get_dep_jars(ctx)
   dep_paths = [dep.short_path for dep in all_deps]
+  cmd = "#!/bin/bash\n\n"
 
   # Copy pubs to the war directory
-  cmd = "rm -rf war\nmkdir war\ncp -LR %s war\n" % (
+  cmd += "rm -rf war\nmkdir war\ncp -LR %s war\n" % (
     " ".join([pub.path for pub in ctx.files.pubs]),
   )
 
@@ -95,16 +96,21 @@ def _gwt_dev_impl(ctx):
 
   # Determine the root directory of the package hierarchy. This needs to be on
   # the classpath for GWT to see changes to source files.
-  cmd += "javaRoot=$(pwd | sed -e 's:\(.*\)%s.*:\\1:')../../../%s\n" % (ctx.attr.package_name, ctx.attr.java_root)
   cmd += 'echo "Dev mode working directoy is $(pwd)"\n'
-  cmd += 'echo "Using Java sources rooted at $javaRoot"\n'
-  cmd += 'if [ ! -d $javaRoot ]; then\n'
-  cmd += '  echo "The Java root directory doesn\'t exist. Is java_root set correctly in your gwt_application?"\n'
-  cmd += '  exit 1\n'
-  cmd += 'fi\n'
+  cmd += 'javaRoots=("%s")\n' % '" "'.join(ctx.attr.java_roots)
+  cmd += "srcClasspath=''\n"
+  cmd += "for root in ${javaRoots[@]}; do\n"
+  cmd += "  rootDir=$(pwd | sed -e 's:\(.*\)%s.*:\\1:')../../../$root\n" % (ctx.attr.package_name)
+  cmd += '  if [ -d $rootDir ]; then\n'
+  cmd += "    srcClasspath+=:$rootDir\n"
+  cmd += '    echo "Using Java sources rooted at $rootDir"\n'
+  cmd += '  else\n'
+  cmd += '    echo "No Java sources found under $rootDir"\n'
+  cmd += '  fi\n'
+  cmd += "done\n"
 
   # Run dev mode
-  cmd += "java %s -cp $javaRoot:%s com.google.gwt.dev.DevMode -war %s -workDir ./dev-workdir %s %s\n" % (
+  cmd += "java %s -cp $srcClasspath:%s com.google.gwt.dev.DevMode -war %s -workDir ./dev-workdir %s %s\n" % (
     " ".join(ctx.attr.jvm_flags),
     ":".join(dep_paths),
     "war/" + ctx.attr.output_root,
@@ -126,7 +132,7 @@ _gwt_dev = rule(
   implementation = _gwt_dev_impl,
   attrs = {
     "package_name": attr.string(mandatory=True),
-    "java_root": attr.string(mandatory=True),
+    "java_roots": attr.string_list(mandatory=True),
     "deps": attr.label_list(mandatory=True, allow_files=FileType([".jar"])),
     "modules": attr.string_list(mandatory=True),
     "pubs": attr.label_list(allow_files=True),
@@ -154,7 +160,7 @@ def gwt_application(
     deps=[],
     visibility=[],
     output_root=".",
-    java_root="src/main/java",
+    java_roots=["java", "javatests", "src/main/java", "src/test/java"],
     compiler_flags=[],
     compiler_jvm_flags=[],
     dev_flags=[],
@@ -185,12 +191,13 @@ def gwt_application(
     visibility: The visibility of this rule.
     output_root: Directory in the output war in which all outputs will be placed.
       By default outputs are placed at the root of the war file.
-    java_root: Directory relative to the workspace root that forms the root of the
-      Java package hierarchy (e.g. it contains a `com` directory). By default this
-      is src/main/java. If your Java files aren't under src/main/java, you must
-      set this property in order for development mode to work correctly. Otherwise
-      GWT won't be able to see your source files, so you will not see any changes
-      reflected when refreshing dev mode.
+    java_roots: Directories relative to the workspace root that form roots of the
+      Java package hierarchy (e.g. they contain `com` directories). By default
+      this includes "java", "javatests", "src/main/java" and "src/test/java". If
+      your Java files aren't under these directories, you must set this property
+      in order for development mode to work correctly. Otherwise GWT won't be
+      able to see your source files, so you will not see any changes reflected
+      when refreshing dev mode.
     compiler_flags: Additional flags that will be passed to the GWT compiler.
     compiler_jvm_flags: Additional JVM flags that will be passed to the GWT
       compiler, such as `-Xmx4G` to increase the amount of available memory.
@@ -239,7 +246,7 @@ def gwt_application(
   )
   _gwt_dev(
     name = name + "-dev",
-    java_root = java_root,
+    java_roots = java_roots,
     output_root = output_root,
     package_name = PACKAGE_NAME,
     deps = [

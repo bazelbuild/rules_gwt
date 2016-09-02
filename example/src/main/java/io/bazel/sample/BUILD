@@ -31,12 +31,13 @@ gwt_application(
         "-Xmx1G",
     ],
 
-    # The root of the Java package hierarchy (which usually contains a top-level
+    # Roots of the Java package hierarchy (which usually contains a top-level
     # package like "com"), relative to the root of the workspace (the directory
-    # containing the WORKSPACE file). By default, this is set to "src/main/java".
-    # If your java files aren't under src/main/java (which is the case in this
-    # example), you must set this attribute for dev mode to function correctly.
-    java_root = "example/src/main/java",
+    # containing the WORKSPACE file). By default, the roots include "java",
+    # "javatests", "src/main/java", and "src/test/java". If your java files
+    # aren't under one of these directories (which is the case in this example),
+    # you must set this attribute for dev mode to function correctly.
+    java_roots = ["example/src/main/java"],
 
     # Name of the GWT modules to be compiled, which should correspond to .gwt.xml
     # files. At least one is required.

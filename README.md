@@ -191,16 +191,17 @@ gwt_application(name, srcs, resources, modules, pubs, deps, output_root, java_ro
       </td>
     </tr>
     <tr>
-      <td><code>java_root</code></td>
+      <td><code>java_roots</code></td>
       <td>
-        <code>String, optional</code>
+        <code>List of strings, optional</code>
         <p>
-          Directory relative to the workspace root that forms the root of the
-          Java package hierarchy (e.g. it contains a <code>com</code> directory).
-          By default this is `src/main/java`. If your Java files aren't under
-          <code>src/main/java</code>, you must set this property in order for
-          development mode to work correctly. Otherwise GWT won't be able to see
-          your source files, so you will not see any changes reflected when
+          Directories relative to the workspace root that form roots of the
+          Java package hierarchy (e.g. they contain <code>com</code> directories).
+          By default this includes <code>java</code>, <code>javatests</code>,
+          <code>src/main/java</code> and <code>src/test/java</code>. If your Java
+          files aren't under these directories, you must set this property in order
+          for development mode to work correctly. Otherwise GWT won't be able to
+          see your source files, so you will not see any changes reflected when
           refreshing dev mode.
         </p>
       </td>
