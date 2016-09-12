@@ -267,11 +267,11 @@ def gwt_repositories():
   )
   native.maven_jar(
     name = "gwt_dev_artifact",
-    artifact = "com.google.gwt:gwt-dev:2.8.0-beta1",
+    artifact = "com.google.gwt:gwt-dev:2.8.0-rc2",
   )
   native.maven_jar(
     name = "gwt_user_artifact",
-    artifact = "com.google.gwt:gwt-user:2.8.0-beta1",
+    artifact = "com.google.gwt:gwt-user:2.8.0-rc2",
   )
   native.maven_jar(
     name = "javax_validation_artifact",
