@@ -33,6 +33,7 @@ The easiest way to do so is to add the following to your `WORKSPACE` file:
 http_archive(
   name = "io_bazel_rules_gwt",
   url = "https://github.com/bazelbuild/rules_gwt/archive/0.0.1.tar.gz",
+  sha256 = "abcce6ff60947d0351a3c834209d77190adf19fbe5531830d9c408cca638ab68",
   strip_prefix = "bazel-gwt-0.0.1",
 )
 load("@io_bazel_rules_gwt//gwt:gwt.bzl", "gwt_repositories")
