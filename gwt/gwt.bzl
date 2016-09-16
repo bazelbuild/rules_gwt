@@ -268,38 +268,47 @@ def gwt_repositories():
   native.maven_jar(
     name = "ant_artifact",
     artifact = "org.apache.ant:ant:1.9.7",
+    sha1 = "3b2a10512ee6537d3852c9b693a0284dcab5de68",
   )
   native.maven_jar(
     name = "asm_artifact",
     artifact = "org.ow2.asm:asm:5.0.3",
+    sha1 = "dcc2193db20e19e1feca8b1240dbbc4e190824fa",
   )
   native.maven_jar(
     name = "colt_artifact",
     artifact = "colt:colt:1.2.0",
+    sha1 = "0abc984f3adc760684d49e0f11ddf167ba516d4f",
   )
   native.maven_jar(
     name = "gwt_dev_artifact",
     artifact = "com.google.gwt:gwt-dev:2.8.0-rc2",
+    sha1 = "d70a6feb4661c07488090cb81303415e9110b15a",
   )
   native.maven_jar(
     name = "gwt_user_artifact",
     artifact = "com.google.gwt:gwt-user:2.8.0-rc2",
+    sha1 = "ad99b09a626c20cce2bdacf3726a51b2cd16b99e",
   )
   native.maven_jar(
     name = "javax_validation_artifact",
     artifact = "javax.validation:validation-api:1.0.0.GA",
+    sha1 = "b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e",
   )
   native.http_jar(
     name = "javax_validation_sources_artifact",
     url = "http://repo1.maven.org/maven2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar",
+    sha256 = "a394d52a9b7fe2bb14f0718d2b3c8308ffe8f37e911956012398d55c9f9f9b54",
   )
   native.maven_jar(
     name = "jsinterop_artifact",
     artifact = "com.google.jsinterop:jsinterop-annotations:1.0.0",
+    sha1 = "23c3a3c060ffe4817e67673cc8294e154b0a4a95",
   )
   native.http_jar(
     name = "jsinterop_sources_artifact",
     url = "http://central.maven.org/maven2/com/google/jsinterop/jsinterop-annotations/1.0.0/jsinterop-annotations-1.0.0-sources.jar",
+    sha256 = "80d63c117736ae2fb9837b7a39576f3f0c5bd19cd75127886550c77b4c478f87",
   )
 
   native.bind(
