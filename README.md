@@ -36,9 +36,9 @@ The easiest way to do so is to add the following to your `WORKSPACE` file:
 ```python
 http_archive(
   name = "io_bazel_rules_gwt",
-  url = "https://github.com/bazelbuild/rules_gwt/archive/0.0.1.tar.gz",
-  sha256 = "abcce6ff60947d0351a3c834209d77190adf19fbe5531830d9c408cca638ab68",
-  strip_prefix = "bazel-gwt-0.0.1",
+  url = "https://github.com/bazelbuild/rules_gwt/archive/0.0.2.tar.gz",
+  sha256 = "10a3de3af8169fb3741a5285aabad629bbdc5cc32b78d59204a6378ed5f9c1ec",
+  strip_prefix = "bazel-gwt-0.0.2",
 )
 load("@io_bazel_rules_gwt//gwt:gwt.bzl", "gwt_repositories")
 gwt_repositories()
