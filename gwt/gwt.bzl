@@ -210,11 +210,15 @@ def gwt_application(
   # th classpath directly, since in large projects the classpath length could
   # exceed the maximum command-line length accepted by the OS.
   all_deps = deps + [
+    "//external:ant",
     "//external:asm",
-    "//external:javax-validation",
-    "//external:javax-validation-src",
+    "//external:colt",
     "//external:gwt-dev",
     "//external:gwt-user",
+    "//external:javax-validation",
+    "//external:javax-validation-src",
+    "//external:jsinterop",
+    "//external:jsinterop-src",
   ]
   if len(srcs) > 0:
     native.java_binary(
@@ -262,8 +266,16 @@ def gwt_application(
 
 def gwt_repositories():
   native.maven_jar(
+    name = "ant_artifact",
+    artifact = "org.apache.ant:ant:1.9.7",
+  )
+  native.maven_jar(
     name = "asm_artifact",
     artifact = "org.ow2.asm:asm:5.0.3",
+  )
+  native.maven_jar(
+    name = "colt_artifact",
+    artifact = "colt:colt:1.2.0",
   )
   native.maven_jar(
     name = "gwt_dev_artifact",
@@ -280,11 +292,27 @@ def gwt_repositories():
   native.http_jar(
     name = "javax_validation_sources_artifact",
     url = "http://repo1.maven.org/maven2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar",
- )
+  )
+  native.maven_jar(
+    name = "jsinterop_artifact",
+    artifact = "com.google.jsinterop:jsinterop-annotations:1.0.0",
+  )
+  native.http_jar(
+    name = "jsinterop_sources_artifact",
+    url = "http://central.maven.org/maven2/com/google/jsinterop/jsinterop-annotations/1.0.0/jsinterop-annotations-1.0.0-sources.jar",
+  )
 
+  native.bind(
+    name = "ant",
+    actual = "@ant_artifact//jar",
+  )
   native.bind(
     name = "asm",
     actual = "@asm_artifact//jar",
+  )
+  native.bind(
+    name = "colt",
+    actual = "@colt_artifact//jar",
   )
   native.bind(
     name = "javax-validation",
@@ -301,4 +329,12 @@ def gwt_repositories():
   native.bind(
     name = "gwt-user",
     actual = "@gwt_user_artifact//jar",
+  )
+  native.bind(
+    name = "jsinterop",
+    actual = "@jsinterop_artifact//jar",
+  )
+  native.bind(
+    name = "jsinterop-src",
+    actual = "@jsinterop_sources_artifact//jar",
   )

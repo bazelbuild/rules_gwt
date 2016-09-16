@@ -19,13 +19,17 @@ via `bazel run`.
 ## Setup
 
 To be able to use the GWT rules, you must provide bindings for the following
-targets:
+targets that GWT depends on:
 
+  * `//external:ant`
   * `//external:asm`
-  * `//external:javax-validation`
-  * `//external:java-validation-src`
+  * `//external:colt`
   * `//external:gwt-dev`
   * `//external:gwt-user`
+  * `//external:javax-validation`
+  * `//external:java-validation-src`
+  * `//external:jsinterop`
+  * `//external:jsinterop-src`
 
 The easiest way to do so is to add the following to your `WORKSPACE` file:
 
