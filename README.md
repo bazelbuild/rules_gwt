@@ -18,31 +18,38 @@ via `bazel run`.
 <a name="setup"></a>
 ## Setup
 
-To be able to use the GWT rules, you must provide bindings for the following
-targets that GWT depends on:
-
-  * `//external:ant`
-  * `//external:asm`
-  * `//external:colt`
-  * `//external:gwt-dev`
-  * `//external:gwt-user`
-  * `//external:javax-validation`
-  * `//external:java-validation-src`
-  * `//external:jsinterop`
-  * `//external:jsinterop-src`
-
-The easiest way to do so is to add the following to your `WORKSPACE` file:
+To be able to use the GWT rules, you must provide bindings for the GWT jars and
+everything it depends on. The easiest way to do so is to add the following to
+your `WORKSPACE` file, which will give you default versions for GWT and each
+dependency:
 
 ```python
 http_archive(
   name = "io_bazel_rules_gwt",
   url = "https://github.com/bazelbuild/rules_gwt/archive/0.0.2.tar.gz",
   sha256 = "10a3de3af8169fb3741a5285aabad629bbdc5cc32b78d59204a6378ed5f9c1ec",
-  strip_prefix = "bazel-gwt-0.0.2",
+  strip_prefix = "rules_gwt-0.0.2",
 )
 load("@io_bazel_rules_gwt//gwt:gwt.bzl", "gwt_repositories")
 gwt_repositories()
 ```
+
+If you want to use a different version of GWT or any of its dependencies, you
+must provide your own bindings. Remove the `gwt_repositories()` line above and
+add a `bind` rule for each of the following in your `WORKSPACE`:
+
+  * `//external:ant` (defaults to [`org.apache.ant:ant:1.9.7`](https://mvnrepository.com/artifact/org.apache.ant/ant/1.9.7))
+  * `//external:asm` (defaults to [`org.ow2.asm:asm:5.0.3`](https://mvnrepository.com/artifact/org.ow2.asm/asm/5.0.3))
+  * `//external:colt` (defaults to [`colt:colt:1.2.0`](https://mvnrepository.com/artifact/colt/colt/1.2.0))
+  * `//external:commons-io` (defaults to [`commons-io:commons-io:2.4`](https://mvnrepository.com/artifact/commons-io/commons-io/2.4))
+  * `//external:gwt-dev` (defaults to [`com.google.gwt:gwt-dev:2.8.0-rc3`](https://mvnrepository.com/artifact/com.google.gwt/gwt-dev/2.8.0-rc3))
+  * `//external:gwt-user` (defaults to [`com.google.gwt:gwt-user:2.8.0-rc3`](https://mvnrepository.com/artifact/com.google.gwt/gwt-user/2.8.0-rc3))
+  * `//external:javax-validation` (defaults to [`javax.validation:validation-api:1.0.0.GA`](https://mvnrepository.com/artifact/javax.validation/validation-api/1.0.0.GA))
+  * `//external:java-validation-src` (defaults to [`javax.validation:validation-api:sources:1.0.0.GA`](https://mvnrepository.com/artifact/javax.validation/validation-api/1.0.0.GA))
+  * `//external:jsinterop` (defaults to [`com.google.jsinterop:jsinterop-annotations:1.0.0`](https://mvnrepository.com/artifact/com.google.jsinterop/jsinterop-annotations/1.0.0))
+  * `//external:jsinterop-src` (defaults to [`com.google.jsinterop:jsinterop-annotations:sources:1.0.0`](https://mvnrepository.com/artifact/com.google.jsinterop/jsinterop-annotations/1.0.0))
+  * `//external:sac` (defaults to [`org.w3c.css:sac:1.3`](https://mvnrepository.com/artifact/org.w3c.css/sac/1.3))
+  * `//external:tapestry` (defaults to [`tapestry:tapestry:4.0.2`](https://mvnrepository.com/artifact/tapestry/tapestry/4.0.2))
 
 <a name="basic-example"></a>
 ## Basic Example

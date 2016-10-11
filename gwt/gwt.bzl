@@ -213,12 +213,15 @@ def gwt_application(
     "//external:ant",
     "//external:asm",
     "//external:colt",
+    "//external:commons-io",
     "//external:gwt-dev",
     "//external:gwt-user",
     "//external:javax-validation",
     "//external:javax-validation-src",
     "//external:jsinterop",
     "//external:jsinterop-src",
+    "//external:sac",
+    "//external:tapestry",
   ]
   if len(srcs) > 0:
     native.java_binary(
@@ -281,14 +284,19 @@ def gwt_repositories():
     sha1 = "0abc984f3adc760684d49e0f11ddf167ba516d4f",
   )
   native.maven_jar(
+    name = "commons_io_artifact",
+    artifact = "commons-io:commons-io:2.4",
+    sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad",
+  )
+  native.maven_jar(
     name = "gwt_dev_artifact",
-    artifact = "com.google.gwt:gwt-dev:2.8.0-rc2",
-    sha1 = "d70a6feb4661c07488090cb81303415e9110b15a",
+    artifact = "com.google.gwt:gwt-dev:2.8.0-rc3",
+    sha1 = "af7b628b0b9a8b475d438f0a53ca7a5bd27d88f8",
   )
   native.maven_jar(
     name = "gwt_user_artifact",
-    artifact = "com.google.gwt:gwt-user:2.8.0-rc2",
-    sha1 = "ad99b09a626c20cce2bdacf3726a51b2cd16b99e",
+    artifact = "com.google.gwt:gwt-user:2.8.0-rc3",
+    sha1 = "3195c357eda0477a8ed91762a3e4b8320d2096a7",
   )
   native.maven_jar(
     name = "javax_validation_artifact",
@@ -310,6 +318,16 @@ def gwt_repositories():
     url = "http://central.maven.org/maven2/com/google/jsinterop/jsinterop-annotations/1.0.0/jsinterop-annotations-1.0.0-sources.jar",
     sha256 = "80d63c117736ae2fb9837b7a39576f3f0c5bd19cd75127886550c77b4c478f87",
   )
+  native.maven_jar(
+    name = "sac_artifact",
+    artifact = "org.w3c.css:sac:1.3",
+    sha1="cdb2dcb4e22b83d6b32b93095f644c3462739e82",
+  )
+  native.maven_jar(
+    name = "tapestry_artifact",
+    artifact = "tapestry:tapestry:4.0.2",
+    sha1="e855a807425d522e958cbce8697f21e9d679b1f7",
+  )
 
   native.bind(
     name = "ant",
@@ -322,6 +340,10 @@ def gwt_repositories():
   native.bind(
     name = "colt",
     actual = "@colt_artifact//jar",
+  )
+  native.bind(
+    name = "commons-io",
+    actual = "@commons_io_artifact//jar",
   )
   native.bind(
     name = "javax-validation",
@@ -346,4 +368,12 @@ def gwt_repositories():
   native.bind(
     name = "jsinterop-src",
     actual = "@jsinterop_sources_artifact//jar",
+  )
+  native.bind(
+    name = "sac",
+    actual = "@sac_artifact//jar",
+  )
+  native.bind(
+    name = "tapestry",
+    actual = "@tapestry_artifact//jar",
   )
