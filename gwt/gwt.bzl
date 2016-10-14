@@ -240,6 +240,7 @@ def gwt_application(
   if len(srcs) > 0:
     native.java_binary(
       name = name + "-deps",
+      main_class = name,
       resources = resources,
       srcs = srcs,
       deps = all_deps,
@@ -247,6 +248,7 @@ def gwt_application(
   else:
     native.java_binary(
       name = name + "-deps",
+      main_class = name,
       resources = resources,
       runtime_deps = all_deps,
     )
