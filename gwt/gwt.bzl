@@ -304,8 +304,8 @@ def gwt_repositories():
   )
   native.maven_jar(
     name = "gwt_dev_artifact",
-    artifact = "com.google.gwt:gwt-dev:2.8.0-rc3",
-    sha1 = "af7b628b0b9a8b475d438f0a53ca7a5bd27d88f8",
+    artifact = "com.google.gwt:gwt-dev:2.8.0",
+    sha1 = "f160a61272c5ebe805cd2d3d3256ed3ecf14893f",
   )
   native.maven_jar(
     name = "gwt_javax_servlet_artifact",
@@ -409,8 +409,8 @@ def gwt_repositories():
   )
   native.maven_jar(
     name = "gwt_user_artifact",
-    artifact = "com.google.gwt:gwt-user:2.8.0-rc3",
-    sha1 = "3195c357eda0477a8ed91762a3e4b8320d2096a7",
+    artifact = "com.google.gwt:gwt-user:2.8.0",
+    sha1 = "518579870499e15531f454f35dca0772d7fa31f7",
   )
 
   native.bind(

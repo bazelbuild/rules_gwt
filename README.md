@@ -38,10 +38,10 @@ If you want to use a different version of GWT or any of its dependencies, you
 must provide your own bindings. Remove the `gwt_repositories()` line above and
 add a `bind` rule for each of the following in your `WORKSPACE`:
 
-  * `//external:gwt-dev` (defaults to [`com.google.gwt:gwt-dev:2.8.0-rc3`](https://mvnrepository.com/artifact/com.google.gwt/gwt-dev/2.8.0-rc3))
-  * `//external:gwt-user` (defaults to [`com.google.gwt:gwt-user:2.8.0-rc3`](https://mvnrepository.com/artifact/com.google.gwt/gwt-user/2.8.0-rc3))
+  * `//external:gwt-dev` (defaults to [`com.google.gwt:gwt-dev:2.8.0`](https://mvnrepository.com/artifact/com.google.gwt/gwt-dev/2.8.0))
+  * `//external:gwt-user` (defaults to [`com.google.gwt:gwt-user:2.8.0`](https://mvnrepository.com/artifact/com.google.gwt/gwt-user/2.8.0))
   * `//external:gwt_ant` (defaults to [`org.apache.ant:ant:1.9.7`](https://mvnrepository.com/artifact/org.apache.ant/ant/1.9.7))
-  * `//external:gwt_asm` (defaults to [`org.ow2.asm:asm:5.0.3`](https://mvnrepository.com/artifact/org.ow2.asm/asm/5.0.3))
+  * `//external:gwt_asm` (defaults to [`org.ow2.asm:asm:5.0.3`](https://mvnrepository.com/artifact/org.ow2.asm/asm/5.0.3))a
   * `//external:gwt_colt` (defaults to [`colt:colt:1.2.0`](https://mvnrepository.com/artifact/colt/colt/1.2.0))
   * `//external:gwt_commons-io` (defaults to [`commons-io:commons-io:2.4`](https://mvnrepository.com/artifact/commons-io/commons-io/2.4))
   * `//external:gwt_javax-servlet` (defaults to [`javax.servlet:javax.servlet-api:3.1.0`](https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/3.1.0))
