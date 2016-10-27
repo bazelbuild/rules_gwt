@@ -112,8 +112,8 @@ all of its output as well as `index.html` into
 `bazel run src/main/java/app:MyApp-dev` to run GWT development mode for the
 application. Once development mode has started, you can see the app by opening
 http://127.0.0.1:8888/index.html in a browser. Note that development mode assumes
-that all of your `.java` files are located under `src/main/java/` - see details
-on the `java_root` flag below if this is not the case.
+that all of your `.java` files are located under `java/` or `src/main/java/` - see
+details on the `java_roots` flag below if this is not the case.
 
 For a complete example, see the
 [`example/`](https://github.com/bazelbuild/rules_gwt/tree/master/example/src/main/java/io/bazel/sample)
