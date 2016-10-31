@@ -45,7 +45,7 @@ gwt_application(
 
     # Files that should be copied directly into the output war, like a static html
     # page that bootstraps the GWT app. Optional.
-    pubs = glob(["public/*"]),
+    pubs = glob(["public/*"], exclude_directories = 0),
 
     # Resources to include on the classpath when running the GWT compiler. Make
     # sure to include your .gwt.xml file and any other resources (e.g. css or
