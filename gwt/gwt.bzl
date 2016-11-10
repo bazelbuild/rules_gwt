@@ -73,6 +73,7 @@ _gwt_war = rule(
     "_zip": attr.label(
       default=Label("@bazel_tools//tools/zip:zipper"),
       executable=True,
+      cfg="host",
       single_file=True),
   },
   outputs = {
