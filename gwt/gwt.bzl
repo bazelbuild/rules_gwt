@@ -25,7 +25,7 @@ def _gwt_war_impl(ctx):
 
   # Copy pubs into the output war
   if len(ctx.files.pubs) > 0:
-    cmd += "cp -r %s %s\n" % (
+    cmd += "cp -LR %s %s\n" % (
       " ".join([pub.path for pub in ctx.files.pubs]),
       output_dir,
     )
