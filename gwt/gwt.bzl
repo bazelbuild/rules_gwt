@@ -217,6 +217,7 @@ def gwt_application(
     "//external:gwt_asm",
     "//external:gwt_colt",
     "//external:gwt_commons-io",
+    "//external:gwt_gson",
     "//external:gwt_javax-servlet",
     "//external:gwt_javax-validation",
     "//external:gwt_javax-validation-src",
@@ -309,6 +310,11 @@ def gwt_repositories():
     name = "gwt_dev_artifact",
     artifact = "com.google.gwt:gwt-dev:2.8.0",
     sha1 = "f160a61272c5ebe805cd2d3d3256ed3ecf14893f",
+  )
+  native.maven_jar(
+    name = "gwt_gson_artifact",
+    artifact = "com.google.code.gson:gson:2.6.2",
+    sha1 = "f1bc476cc167b18e66c297df599b2377131a8947",
   )
   native.maven_jar(
     name = "gwt_javax_servlet_artifact",
@@ -439,6 +445,10 @@ def gwt_repositories():
   native.bind(
     name = "gwt_commons-io",
     actual = "@gwt_commons_io_artifact//jar",
+  )
+  native.bind(
+    name = "gwt_gson",
+    actual = "@gwt_gson_artifact//jar",
   )
   native.bind(
     name = "gwt_javax-servlet",

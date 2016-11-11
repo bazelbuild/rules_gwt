@@ -44,6 +44,7 @@ add a `bind` rule for each of the following in your `WORKSPACE`:
   * `//external:gwt_asm` (defaults to [`org.ow2.asm:asm:5.0.3`](https://mvnrepository.com/artifact/org.ow2.asm/asm/5.0.3))a
   * `//external:gwt_colt` (defaults to [`colt:colt:1.2.0`](https://mvnrepository.com/artifact/colt/colt/1.2.0))
   * `//external:gwt_commons-io` (defaults to [`commons-io:commons-io:2.4`](https://mvnrepository.com/artifact/commons-io/commons-io/2.4))
+  * `//external:gwt_gson` (defaults to [`com.google.code.gson:gson:2.6.2`](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.6.2))
   * `//external:gwt_javax-servlet` (defaults to [`javax.servlet:javax.servlet-api:3.1.0`](https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/3.1.0))
   * `//external:gwt_javax-validation` (defaults to [`javax.validation:validation-api:1.0.0.GA`](https://mvnrepository.com/artifact/javax.validation/validation-api/1.0.0.GA))
   * `//external:gwt_java-validation-src` (defaults to [`javax.validation:validation-api:sources:1.0.0.GA`](https://mvnrepository.com/artifact/javax.validation/validation-api/1.0.0.GA))
