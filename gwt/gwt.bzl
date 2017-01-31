@@ -13,7 +13,8 @@ def _gwt_war_impl(ctx):
   all_deps = _get_dep_jars(ctx)
 
   # Run the GWT compiler
-  cmd = "external/local_jdk/bin/java %s -cp %s com.google.gwt.dev.Compiler -war %s -deploy %s -extra %s %s %s\n" % (
+  cmd = "%s %s -cp %s com.google.gwt.dev.Compiler -war %s -deploy %s -extra %s %s %s\n" % (
+    ctx.executable._java.path,
     " ".join(ctx.attr.jvm_flags),
     ":".join([dep.path for dep in all_deps]),
     output_dir + "/" + ctx.attr.output_root,
@@ -68,6 +69,12 @@ _gwt_war = rule(
     "output_root": attr.string(default="."),
     "compiler_flags": attr.string_list(),
     "jvm_flags": attr.string_list(),
+    "_java": attr.label(
+      default=Label("@local_jdk//:bin/java"),
+      executable=True,
+      cfg="host",
+      single_file=True,
+      allow_files=True),
     "_jdk": attr.label(
       default=Label("//tools/defaults:jdk")),
     "_zip": attr.label(
