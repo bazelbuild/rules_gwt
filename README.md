@@ -26,9 +26,9 @@ dependency:
 ```python
 http_archive(
   name = "io_bazel_rules_gwt",
-  url = "https://github.com/bazelbuild/rules_gwt/archive/0.1.1.tar.gz",
-  sha256 = "9d467196576448a315110fe8eb5b04ed2aa5e2d67bc2f5822da1dbabb3a92e92",
-  strip_prefix = "rules_gwt-0.1.1",
+  url = "https://github.com/bazelbuild/rules_gwt/archive/0.1.2.tar.gz",
+  sha256 = "070493202eebcf4a43c2a9acdf365d404b494950b0bce3f6ce144d8af784e868",
+  strip_prefix = "rules_gwt-0.1.2",
 )
 load("@io_bazel_rules_gwt//gwt:gwt.bzl", "gwt_repositories")
 gwt_repositories()
