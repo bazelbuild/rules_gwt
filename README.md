@@ -1,3 +1,5 @@
+[![Build status](https://badge.buildkite.com/098023d2f6cea6cc1d8645e99d8924901284b5551b6eb55bd2.svg)](https://buildkite.com/bazel/rules-gwt-postsubmit)
+
 # GWT Rules for Bazel
 
 <div class="toc">
