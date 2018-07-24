@@ -126,7 +126,7 @@ directory in this repository.
 ## gwt_application
 
 ```python
-gwt_application(name, srcs, resources, modules, pubs, deps, output_root, java_root, compiler_flags, compiler_jvm_flags, dev_flags, dev_jvm_flags):
+gwt_application(name, srcs, resources, modules, pubs, deps, output_root, java_roots, compiler_flags, compiler_jvm_flags, dev_flags, dev_jvm_flags):
 ```
 
 ### Implicit output targets
