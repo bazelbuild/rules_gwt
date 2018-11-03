@@ -4,6 +4,8 @@ Skylark rules for building [GWT](http://www.gwtproject.org/) applications using
 Bazel.
 """
 
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+
 def _gwt_war_impl(ctx):
   output_war = ctx.outputs.output_war
   output_dir = output_war.path + ".gwt_output"
@@ -333,7 +335,7 @@ def gwt_repositories():
     artifact = "javax.validation:validation-api:1.0.0.GA",
     sha1 = "b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e",
   )
-  native.http_jar(
+  http_jar(
     name = "gwt_javax_validation_sources_artifact",
     url = "http://repo1.maven.org/maven2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar",
     sha256 = "a394d52a9b7fe2bb14f0718d2b3c8308ffe8f37e911956012398d55c9f9f9b54",
@@ -403,7 +405,7 @@ def gwt_repositories():
     artifact = "com.google.jsinterop:jsinterop-annotations:1.0.0",
     sha1 = "23c3a3c060ffe4817e67673cc8294e154b0a4a95",
   )
-  native.http_jar(
+  http_jar(
     name = "gwt_jsinterop_sources_artifact",
     url = "http://central.maven.org/maven2/com/google/jsinterop/jsinterop-annotations/1.0.0/jsinterop-annotations-1.0.0-sources.jar",
     sha256 = "80d63c117736ae2fb9837b7a39576f3f0c5bd19cd75127886550c77b4c478f87",
