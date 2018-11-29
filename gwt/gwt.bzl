@@ -54,7 +54,7 @@ def _gwt_war_impl(ctx):
     cmd += "cd $root\n"
 
     # Execute the command
-    ctx.action(
+    ctx.actions.run_shell(
         inputs = ctx.files.pubs + list(all_deps) + ctx.files._jdk + ctx.files._zip,
         outputs = [output_war],
         mnemonic = "GwtCompile",
@@ -75,8 +75,7 @@ _gwt_war = rule(
             default = Label("@local_jdk//:bin/java"),
             executable = True,
             cfg = "host",
-            single_file = True,
-            allow_files = True,
+            allow_single_file = True,
         ),
         "_jdk": attr.label(
             default = Label("//tools/defaults:jdk"),
@@ -85,7 +84,7 @@ _gwt_war = rule(
             default = Label("@bazel_tools//tools/zip:zipper"),
             executable = True,
             cfg = "host",
-            single_file = True,
+            allow_single_file = True,
         ),
     },
     outputs = {
@@ -132,7 +131,7 @@ def _gwt_dev_impl(ctx):
     )
 
     # Return the script and all dependencies needed to run it
-    ctx.file_action(
+    ctx.actions.write(
         output = ctx.outputs.executable,
         content = cmd,
     )
@@ -286,7 +285,7 @@ def gwt_application(
         name = name + "-dev",
         java_roots = java_roots,
         output_root = output_root,
-        package_name = PACKAGE_NAME,
+        package_name = native.package_name(),
         deps = [
             name + "-deps_deploy.jar",
             name + "-deps_deploy-src.jar",
