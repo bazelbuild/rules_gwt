@@ -55,7 +55,8 @@ def _gwt_war_impl(ctx):
 
     # Execute the command
     ctx.actions.run_shell(
-        inputs = ctx.files.pubs + list(all_deps) + ctx.files._jdk + ctx.files._zip,
+        inputs = ctx.files.pubs + list(all_deps) + ctx.files._jdk,
+        tools = ctx.files._zip,
         outputs = [output_war],
         mnemonic = "GwtCompile",
         progress_message = "GWT compiling " + output_war.short_path,
@@ -65,7 +66,7 @@ def _gwt_war_impl(ctx):
 _gwt_war = rule(
     implementation = _gwt_war_impl,
     attrs = {
-        "deps": attr.label_list(allow_files = FileType([".jar"])),
+        "deps": attr.label_list(allow_files = [".jar"]),
         "pubs": attr.label_list(allow_files = True),
         "modules": attr.string_list(mandatory = True),
         "output_root": attr.string(default = "."),
@@ -95,7 +96,9 @@ _gwt_war = rule(
 def _gwt_dev_impl(ctx):
     # Find all transitive dependencies that need to go on the classpath
     all_deps = _get_dep_jars(ctx)
-    dep_paths = [dep.short_path for dep in all_deps]
+
+    # TODO: to avoid flattening the depset, use ctx.actions.args
+    dep_paths = [dep.short_path for dep in all_deps.to_list()]
     cmd = "#!/bin/bash\n\n"
 
     # Copy pubs to the war directory
@@ -145,7 +148,7 @@ _gwt_dev = rule(
     attrs = {
         "package_name": attr.string(mandatory = True),
         "java_roots": attr.string_list(mandatory = True),
-        "deps": attr.label_list(mandatory = True, allow_files = FileType([".jar"])),
+        "deps": attr.label_list(mandatory = True, allow_files = [".jar"]),
         "modules": attr.string_list(mandatory = True),
         "pubs": attr.label_list(allow_files = True),
         "output_root": attr.string(default = "."),
