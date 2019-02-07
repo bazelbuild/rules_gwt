@@ -5,6 +5,7 @@ Bazel.
 """
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
 
 def _gwt_war_impl(ctx):
     output_war = ctx.outputs.output_war
@@ -301,140 +302,190 @@ def gwt_application(
     )
 
 def gwt_repositories():
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_ant_artifact",
         artifact = "org.apache.ant:ant:1.9.7",
-        sha1 = "3b2a10512ee6537d3852c9b693a0284dcab5de68",
+        artifact_sha256 = "9a5dbe3f5f2cb91854c8682cab80178afa412ab35a5ab718bf39ce01b3435d93",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_asm_artifact",
         artifact = "org.ow2.asm:asm:5.0.3",
-        sha1 = "dcc2193db20e19e1feca8b1240dbbc4e190824fa",
+        artifact_sha256 = "71c4f78e437b8fdcd9cc0dfd2abea8c089eb677005a6a5cff320206cc52b46cc",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # BSD License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_colt_artifact",
         artifact = "colt:colt:1.2.0",
-        sha1 = "0abc984f3adc760684d49e0f11ddf167ba516d4f",
+        artifact_sha256 = "e1fcbfbdd0d0caedadfb59febace5a62812db3b9425f3a03ef4c4cbba3ed0ee3",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["unencumbered"], # No License 
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_commons_io_artifact",
         artifact = "commons-io:commons-io:2.4",
-        sha1 = "b1b6ea3b7e4aa4f492509a4952029cd8e48019ad",
+        artifact_sha256 = "cc6a41dc3eaacc9e440a6bd0d2890b20d36b4ee408fe2d67122f328bb6e01581",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_dev_artifact",
         artifact = "com.google.gwt:gwt-dev:2.8.0",
-        sha1 = "f160a61272c5ebe805cd2d3d3256ed3ecf14893f",
+        artifact_sha256 = "8fc95f97b36568a087580f7c449f5bd698229a1d05942b041a514bb85ae97304",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["unencumbered"], # No License  
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_gson_artifact",
         artifact = "com.google.code.gson:gson:2.6.2",
-        sha1 = "f1bc476cc167b18e66c297df599b2377131a8947",
+        artifact_sha256 = "b8545ba775f641f8bba86027f06307152279fee89a46a4006df1bf2f874d4d9d",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License        
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_javax_servlet_artifact",
         artifact = "javax.servlet:javax.servlet-api:3.1.0",
-        sha1 = "3cd63d075497751784b2fa84be59432f4905bf7c",
+        artifact_sha256 = "af456b2dd41c4e82cf54f3e743bc678973d9fe35bd4d3071fa05c7e5333b8482",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["reciprocal"], # CDDL License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_javax_validation_artifact",
         artifact = "javax.validation:validation-api:1.0.0.GA",
-        sha1 = "b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e",
+        artifact_sha256 = "e459f313ebc6db2483f8ceaad39af07086361b474fa92e40f442e8de5d9895dc",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
     http_jar(
         name = "gwt_javax_validation_sources_artifact",
         url = "http://repo1.maven.org/maven2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar",
         sha256 = "a394d52a9b7fe2bb14f0718d2b3c8308ffe8f37e911956012398d55c9f9f9b54",
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_annotations_artifact",
         artifact = "org.eclipse.jetty:jetty-annotations:9.2.14.v20151106",
-        sha1 = "bb7030e5d13eaf9023f38e297c8b2fcae4f8be9b",
+        artifact_sha256 = "d2e7774a3a15d6169d728c7f42b0e2b8a6dd3ed77dc776a2352e7a5b9b5f3a6b",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_http_artifact",
         artifact = "org.eclipse.jetty:jetty-http:9.2.14.v20151106",
-        sha1 = "699ad1f2fa6fb0717e1b308a8c9e1b8c69d81ef6",
+        artifact_sha256 = "635e5912cb14dfaefdf8fc7369fe96baa8d888b691a00290603d8bda41b80d61",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_io_artifact",
         artifact = "org.eclipse.jetty:jetty-io:9.2.14.v20151106",
-        sha1 = "dfa4137371a3f08769820138ca1a2184dacda267",
+        artifact_sha256 = "16f2d49f497e5e42c92d96618adee2626af5ba1ac927589529b6fd9a92266d3a",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_jndi_artifact",
         artifact = "org.eclipse.jetty:jetty-jndi:9.2.14.v20151106",
-        sha1 = "c5fb5420a99b8aee335a3ff804c6094eb9034d04",
+        artifact_sha256 = "9181d263612c457437d6f7e8470588eed862cdf1f08eec808d6577503bec5653",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_plus_artifact",
         artifact = "org.eclipse.jetty:jetty-plus:9.2.14.v20151106",
-        sha1 = "1e9304873f2d3563d814a1e714add6b6b3ac0b24",
+        artifact_sha256 = "6c2c574507c693ad76fde1500b9090baccf346313ed342d98c4104234149bdf8",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_security_artifact",
         artifact = "org.eclipse.jetty:jetty-security:9.2.14.v20151106",
-        sha1 = "2d36974323fcb31e54745c1527b996990835db67",
+        artifact_sha256 = "1810b2395f6f0717aef296c6c2d6f9504deb2076ef68b3312e1644c0b9cc3921",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_server_artifact",
         artifact = "org.eclipse.jetty:jetty-server:9.2.14.v20151106",
-        sha1 = "70b22c1353e884accf6300093362b25993dac0f5",
+        artifact_sha256 = "bedeec57bccd1680c8ec71ea0071d4e6946fd8152668b69ab753b34729993e8b",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_servlet_artifact",
         artifact = "org.eclipse.jetty:jetty-servlet:9.2.14.v20151106",
-        sha1 = "3a2cd4d8351a38c5d60e0eee010fee11d87483ef",
+        artifact_sha256 = "ac13cca38e1541647a2fbe726a871dc5c22a757c0d8900c08d77302e414a725f",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_servlets_artifact",
         artifact = "org.eclipse.jetty:jetty-servlets:9.2.14.v20151106",
-        sha1 = "a75c78a0ee544073457ca5ee9db20fdc6ed55225",
+        artifact_sha256 = "2a6e50cc48cfb5de3c3cf15176e229861ac7bc5e03285408078658298b75c421",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_util_artifact",
         artifact = "org.eclipse.jetty:jetty-util:9.2.14.v20151106",
-        sha1 = "0057e00b912ae0c35859ac81594a996007706a0b",
+        artifact_sha256 = "277a2cc734139f620bf5c88c09af2f0328b0114f6fad52776abfbcd8d37166ce",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_webapp_artifact",
         artifact = "org.eclipse.jetty:jetty-webapp:9.2.14.v20151106",
-        sha1 = "773f1c45f6534bff6313997ab3bdbe25533ee255",
+        artifact_sha256 = "1865f0d3c0edc8727eb4e4d1f9c808cec039095e95cfff45816ea6f7059e6fc5",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jetty_xml_artifact",
         artifact = "org.eclipse.jetty:jetty-xml:9.2.14.v20151106",
-        sha1 = "946a5a1d4fb816fd346dba74d09a6c0e162cafcd",
+        artifact_sha256 = "3d13667a02e331c86b124d020338ec5cc901a7986ddf9fd99782578fe77a0459",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # Apache 2.0 License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jsinterop_artifact",
         artifact = "com.google.jsinterop:jsinterop-annotations:1.0.0",
-        sha1 = "23c3a3c060ffe4817e67673cc8294e154b0a4a95",
+        artifact_sha256 = "e5c1e0ceef98fb65a3d382641bcc1faab97649da1b422bbfc60e21b47345c854",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["unencumbered"], # No License
     )
     http_jar(
         name = "gwt_jsinterop_sources_artifact",
         url = "http://central.maven.org/maven2/com/google/jsinterop/jsinterop-annotations/1.0.0/jsinterop-annotations-1.0.0-sources.jar",
         sha256 = "80d63c117736ae2fb9837b7a39576f3f0c5bd19cd75127886550c77b4c478f87",
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_jsr_250_api_artifact",
         artifact = "javax.annotation:jsr250-api:1.0",
-        sha1 = "5025422767732a1ab45d93abfea846513d742dcf",
+        artifact_sha256 = "a1a922d0d9b6d183ed3800dfac01d1e1eb159f0e8c6f94736931c1def54a941f",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["reciprocal"], # CDDL License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_sac_artifact",
         artifact = "org.w3c.css:sac:1.3",
-        sha1 = "cdb2dcb4e22b83d6b32b93095f644c3462739e82",
+        artifact_sha256 = "003785669f921aafe4f137468dd20a01a36111e94fd7449f26c16e7924d82d23",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["notice"], # W3C License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_tapestry_artifact",
         artifact = "tapestry:tapestry:4.0.2",
-        sha1 = "e855a807425d522e958cbce8697f21e9d679b1f7",
+        artifact_sha256 = "16dfc5b6b322bb0734b80e89d77fbeb987c809002fe59d52d9707a035949b107",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["unencumbered"], # No License
     )
-    native.maven_jar(
+    jvm_maven_import_external(
         name = "gwt_user_artifact",
         artifact = "com.google.gwt:gwt-user:2.8.0",
-        sha1 = "518579870499e15531f454f35dca0772d7fa31f7",
+        artifact_sha256 = "07a826107ca2eafd05f2910cbe266f0fa0348e0f72daee7e00a2e228a2b60867",
+        server_urls = ["http://central.maven.org/maven2"],
+        licenses = ["unencumbered"], # No License
     )
 
     native.bind(
