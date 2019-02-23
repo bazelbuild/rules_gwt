@@ -80,7 +80,7 @@ _gwt_war = rule(
             allow_single_file = True,
         ),
         "_jdk": attr.label(
-            default = Label("//tools/defaults:jdk"),
+            default = Label("@bazel_tools//tools/jdk:current_java_runtime"),
         ),
         "_zip": attr.label(
             default = Label("@bazel_tools//tools/zip:zipper"),
