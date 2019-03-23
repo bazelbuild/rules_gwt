@@ -19,7 +19,7 @@ def _gwt_war_impl(ctx):
     cmd = "%s %s -cp %s com.google.gwt.dev.Compiler -war %s -deploy %s -extra %s %s %s\n" % (
         ctx.executable._java.path,
         " ".join(ctx.attr.jvm_flags),
-        ":".join([dep.path for dep in all_deps]),
+        ":".join([dep.path for dep in all_deps.to_list()]),
         output_dir + "/" + ctx.attr.output_root,
         output_dir + "/" + "WEB-INF/deploy",
         extra_dir,
@@ -56,7 +56,7 @@ def _gwt_war_impl(ctx):
 
     # Execute the command
     ctx.actions.run_shell(
-        inputs = ctx.files.pubs + list(all_deps) + ctx.files._jdk,
+        inputs = ctx.files.pubs + all_deps.to_list() + ctx.files._jdk,
         tools = ctx.files._zip,
         outputs = [output_war],
         mnemonic = "GwtCompile",
@@ -141,7 +141,7 @@ def _gwt_dev_impl(ctx):
     )
     return struct(
         executable = ctx.outputs.executable,
-        runfiles = ctx.runfiles(files = list(all_deps) + ctx.files.pubs),
+        runfiles = ctx.runfiles(files = all_deps.to_list() + ctx.files.pubs),
     )
 
 _gwt_dev = rule(
