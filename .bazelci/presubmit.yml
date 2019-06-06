@@ -2,10 +2,7 @@
 platforms:
   ubuntu1604:
     build_targets:
-    - "..."
-  ubuntu1804:
-    build_targets:
-    - "..."
+      - "//..."
   macos:
     build_targets:
-    - "..."
+      - "//..."
