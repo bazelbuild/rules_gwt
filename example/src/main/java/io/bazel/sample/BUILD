@@ -1,4 +1,4 @@
-load("//gwt:gwt.bzl", "gwt_application")
+load("@io_bazel_rules_gwt//gwt:gwt.bzl", "gwt_application")
 
 # Use gwt_application to define your app. It will generate two targets: you can
 # run `bazel build` on `SampleApp` to create a .war file containing the compiled
