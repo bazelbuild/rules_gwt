@@ -116,7 +116,7 @@ def _gwt_dev_impl(ctx):
     cmd += 'javaRoots=("%s")\n' % '" "'.join(ctx.attr.java_roots)
     cmd += "srcClasspath=''\n"
     cmd += "for root in ${javaRoots[@]}; do\n"
-    cmd += "  rootDir=$(pwd | sed -e 's:\(.*\)%s.*:\\1:')../../../$root\n" % (ctx.attr.package_name)
+    cmd += "  rootDir=$(pwd | sed -e 's:\\(.*\\)%s.*:\\1:')../../../$root\n" % (ctx.attr.package_name)
     cmd += "  if [ -d $rootDir ]; then\n"
     cmd += "    srcClasspath+=:$rootDir\n"
     cmd += '    echo "Using Java sources rooted at $rootDir"\n'
