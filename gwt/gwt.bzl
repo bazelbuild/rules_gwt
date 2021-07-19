@@ -332,8 +332,8 @@ def gwt_repositories():
     )
     jvm_maven_import_external(
         name = "gwt_dev_artifact",
-        artifact = "com.google.gwt:gwt-dev:2.8.0",
-        artifact_sha256 = "8fc95f97b36568a087580f7c449f5bd698229a1d05942b041a514bb85ae97304",
+        artifact = "com.google.gwt:gwt-dev:2.9.0",
+        artifact_sha256 = "55f9b79b4f66aad63301f7b99166db827fa5f677a7d8673138bad078eb1bd706",
         server_urls = ["https://repo1.maven.org/maven2"],
         licenses = ["unencumbered"], # No License  
     )
@@ -482,8 +482,8 @@ def gwt_repositories():
     )
     jvm_maven_import_external(
         name = "gwt_user_artifact",
-        artifact = "com.google.gwt:gwt-user:2.8.0",
-        artifact_sha256 = "07a826107ca2eafd05f2910cbe266f0fa0348e0f72daee7e00a2e228a2b60867",
+        artifact = "com.google.gwt:gwt-user:2.9.0",
+        artifact_sha256 = "80420ddfb3b7e2aedc29222328d34a8ebd9f8abab63a82ddf9d837d06a68f7fe",
         server_urls = ["https://repo1.maven.org/maven2"],
         licenses = ["unencumbered"], # No License
     )
