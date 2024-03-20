@@ -180,7 +180,8 @@ def gwt_application(
         compiler_flags = [],
         compiler_jvm_flags = [],
         dev_flags = [],
-        dev_jvm_flags = []):
+        dev_jvm_flags = [],
+        jvm_flags = []):
     """Builds a .war file and a development mode target for a GWT application.
 
     This rule runs the GWT compiler to generate <name>.war, which will contain all
@@ -220,6 +221,8 @@ def gwt_application(
       dev_flags: Additional flags that will be passed to development mode.
       dev_jvm_flags: Additional JVM flags that will be passed to development mode,
         such as `-Xmx4G` to increase the amount of available memory.
+      jvm_flags: Addditional flags that will be passed to the `java_binary` rule
+        used to compile the src and deps.
     """
 
     # Create a dummy java_binary to generate a deploy jar containing all transtive
@@ -262,6 +265,7 @@ def gwt_application(
             resources = resources,
             srcs = srcs,
             deps = all_deps,
+            jvm_flags = jvm_flags,
         )
     else:
         native.java_binary(
@@ -269,6 +273,7 @@ def gwt_application(
             main_class = name,
             resources = resources,
             runtime_deps = all_deps,
+            jvm_flags = jvm_flags,
         )
 
     # Create the war and dev mode targets
