@@ -1,6 +1,15 @@
 [![Build status](https://badge.buildkite.com/098023d2f6cea6cc1d8645e99d8924901284b5551b6eb55bd2.svg)](https://buildkite.com/bazel/rules-gwt-postsubmit)
 
-# GWT Rules for Bazel
+# 📣 [Unmaintained] GWT Rules for Bazel
+
+> [!WARNING]
+> Due to an absence of any maintainers, this repository is archived and currently unmaintained.
+>
+> **We discourage any new dependencies on the contents of this repository.**
+>
+> If you, or your organization, are interested in revitalizing this project by taking over its maintenance, we welcome your initiative.
+> To discuss the process of un-archiving and assuming ownership of this repository, please reach out to us via email at `bazel-contrib@googlegroups.com` or join the conversation on our Slack workspace in the `#rules` channel.
+> You can sign up for Slack access at [https://slack.bazel.build](https://slack.bazel.build).
 
 <div class="toc">
   <h2>Rules</h2>
